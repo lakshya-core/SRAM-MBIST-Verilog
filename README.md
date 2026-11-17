@@ -85,3 +85,37 @@ This is a simulation-based academic project using behavioral SRAM models. It dem
 Lakshya
 
 **Project:** VLSI Design Mini Project
+
+## How to Run the Simulation
+
+### Prerequisites
+Install:
+- Icarus Verilog
+- GTKWave
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/YOUR_USERNAME/SRAM-MBIST-Verilog.git
+cd SRAM-MBIST-Verilog
+```
+
+### 2. Run the normal SRAM test
+```bash
+iverilog -g2012 -o mbist_test.vvp rtl/sram_model.v rtl/mbist_controller.v tb/mbist_tb.v
+vvp mbist_test.vvp
+```
+
+### 3. Run the fault injection test
+```bash
+iverilog -g2012 -o mbist_fault_test.vvp rtl/sram_model_faulty.v rtl/mbist_controller.v tb/mbist_fault_tb.v
+vvp mbist_fault_test.vvp
+```
+
+### 4. View waveforms
+```bash
+gtkwave sim/mbist_wave.vcd
+gtkwave sim/mbist_fault_wave.vcd
+```
+
+**Note:** Run the commands from the project root directory. Ensure the module names and file paths match the uploaded source files.
+
